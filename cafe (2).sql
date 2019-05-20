@@ -317,7 +317,6 @@ ALTER TABLE `secado_limpieza`
 ALTER TABLE `almacen`
   ADD CONSTRAINT `almacen_ibfk_1` FOREIGN KEY (`entrada`) REFERENCES `entrada_cafe` (`id`),
   ADD CONSTRAINT `almacen_ibfk_2` FOREIGN KEY (`calidad`) REFERENCES `calidad` (`id`),
-  ADD CONSTRAINT `almacen_ibfk_3` FOREIGN KEY (`cafe_tipo`) REFERENCES `cafe` (`id`),
   ADD CONSTRAINT `almacen_ibfk_4` FOREIGN KEY (`cafe_tipo`) REFERENCES `tipo_cafe` (`id`);
 
 --
