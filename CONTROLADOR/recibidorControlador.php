@@ -3,8 +3,7 @@
  */
 class RecibidorControlador extends Controlador{
 
-  function __construct()  {
-    echo "<br />CREANDO RECIBIDOR CONTROLER";
+  function __construct()  {s
     parent::__construct();
   }
 
