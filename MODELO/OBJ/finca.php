@@ -8,7 +8,7 @@ class Finca{
     private $propietario;
 
   function __construct() {
-    echo "CREANDO FINCA";
+    // echo "CREANDO FINCA";
   }
 
   public function crear($finca)  {

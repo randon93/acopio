@@ -12,6 +12,8 @@
   	<!-- Custom stlylesheet -->
   	<link type="text/css" rel="stylesheet" href="<?php echo constant('URL');?>PUBLICO/css/style.css" />
     <link type="text/css" rel="stylesheet" href="<?php echo constant('URL');?>PUBLICO/css/estilos.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,7 +24,7 @@
 
     <div class="container">
       <?php
-      include "encabezado.php"; 
+      include "encabezado.php";
       $vista = constant('VISTA');
       include "$vista.php";
       ?>
@@ -64,6 +66,20 @@
         );
 
       })();
+      function justNumbers(e)
+        {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+
+        return /\d/.test(String.fromCharCode(keynum));
+        }
+
+        $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
     </script>
+
   </body>
 </html>

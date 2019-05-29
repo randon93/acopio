@@ -48,7 +48,7 @@
             <form action="<?php echo constant('URL');?>recibidor/registrarEntradaCafe" method="POST">
               <div class="form-group">
                 <label for="formGroupExampleInput">Cantidad Cafe</label>
-                <input type="text" class="form-control" name="cantidad" id="formGroupExampleInput" placeholder="Peso en Kilos (Kg)">
+                <input type="text" class="form-control" name="cantidad" id="formGroupExampleInput" placeholder="Peso en Kilos (Kg)" onkeypress="return justNumbers(event);" >
               </div>
               <div class="form-group">
                 <label >Fincas:  </label>
@@ -95,7 +95,7 @@
           <form action="<?php echo constant('URL');?>recibidor/almacenar" method="POST">
             <div class="form-group">
               <label for="formGroupExampleInput">Cantidad Cafe</label>
-              <input type="text" class="form-control" name="cantidad" id="formGroupExampleInput" placeholder="Peso en Kilos (Kg)">
+              <input type="text" class="form-control" name="cantidad" id="formGroupExampleInput" placeholder="Peso en Kilos (Kg)" onkeypress="return justNumbers(event);" >
             </div>
             <div class="form-group">
               <label >Entrada:  </label>

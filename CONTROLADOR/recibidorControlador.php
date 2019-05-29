@@ -14,6 +14,7 @@ class RecibidorControlador extends Controlador{
           $this->getModelCtr()->registrarEntradaCafe($cantidadCafe, $procedencia);
           header('Location:  http://127.0.0.1/acopio/vista/recibidor');
     }else{
+          $this->getVistaCtr()->msj = "no se registro la entrada";
           header('Location:  http://127.0.0.1/acopio/vista/error');
     }
   }
