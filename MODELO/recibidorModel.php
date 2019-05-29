@@ -4,7 +4,7 @@
 class RecibidorModel extends Modelo {
 
   function __construct()  {
-    echo "<br />CREANDO MODELO RECIBIDRO";
+    // echo "<br />CREANDO MODELO RECIBIDRO";
     parent::__construct();
   }
 

@@ -3,7 +3,7 @@
  */
 class RecibidorControlador extends Controlador{
 
-  function __construct()  {s
+  function __construct()  {
     parent::__construct();
   }
 
@@ -23,14 +23,14 @@ class RecibidorControlador extends Controlador{
     $calidad = $_POST['calidad'];
     $cafe_tipo = $_POST['cafe_tipo'];
     $cantidad = $_POST['cantidad'];
-    echo "<h1>$entrada -- $calidad -- $cafe_tipo -- $cantidad</h1>";
+    // echo "<h1>$entrada -- $calidad -- $cafe_tipo -- $cantidad</h1>";
     if ( $cantidad > 0 ) {
       if ( $this->getModelCtr()->almacenar($entrada, $calidad, $cafe_tipo, $cantidad) ) {
         header('Location:  http://127.0.0.1/acopio/vista/recibidor');
       }
-      echo "<h1>hola</h1>";
+      // echo "<h1>hola</h1>";
     }
-    echo "<h1>hola</h1>";
+    // echo "<h1>hola</h1>";
   }
 
 

@@ -5,7 +5,7 @@
 class Modelo{
 
   function __construct()  {
-    echo "<BR />CREANDO MODELO PADRE";
+    // echo "<BR />CREANDO MODELO PADRE";
     $this->bd = new Conexion();
   }
 }

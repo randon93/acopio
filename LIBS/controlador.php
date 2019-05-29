@@ -14,7 +14,7 @@ class Controlador {
   }
 
   function __construct() {
-    echo " <br /> creando controlador padre";
+    // echo " <br /> creando controlador padre";
     $this->loadView();
   }
 
