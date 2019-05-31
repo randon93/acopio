@@ -12,11 +12,15 @@ class vistaControlador extends Controlador{
     $this->getVistaCtr()->entradas = $this->getModelCtr()->listEntradas();
     $this->getVistaCtr()->calidades = $this->getModelCtr()->listCalidades();
     $this->getVistaCtr()->cafes = $this->getModelCtr()->listCafes();
-    $this->getVistaCtr()->render("recibidor");
+    $this->getVistaCtr()->renderAdmin("recibidor");
   }
 
   public function error()  {
     $this->getVistaCtr()->render("error");
+  }
+
+  public function inicioAdmin()  {
+    $this->getVistaCtr()->render("inicioAdmin");
   }
 }
  ?>
