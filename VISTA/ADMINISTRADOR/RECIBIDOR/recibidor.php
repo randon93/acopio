@@ -28,7 +28,7 @@
 				<div class="panel-body row">
 					<div class="col-md-3">
 						<div class="card card-body dash-box ">
-							<a style="text-decoration:none;" data-toggle="collapse" href="#pru" role="button" aria-expanded="true" aria-controls="pru">
+							<a style="text-decoration:none;" data-toggle="collapse" href="#llegadas" role="button" aria-expanded="true" aria-controls="llegadas">
 							<h2><i class="fas fa-truck"></i> <?php echo count($this->entradas); ?></h2>
 							<h4>Entradas</h4>
 						</a>
@@ -36,8 +36,10 @@
 					</div>
 					<div class="col-md-3">
 						<div class="card card-body dash-box">
-							<h2><i class="fas fa-city"></i> 508</h2>
+							<a style="text-decoration:none;" data-toggle="collapse" href="#fincas" role="button" aria-expanded="true" aria-controls="fincas">
+							<h2><i class="fas fa-city"></i> <?php echo count($this->fincas); ?></h2>
 							<h4>Fincas</h4>
+						</a>
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -59,70 +61,53 @@
 </div>
 
 <!-- TABLA DE LLEGADAS -->
-<div class="container collapse" id="pru">
-		<form>
-			Buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
-		</form>
-		<div class="table-wrapper-scroll-y my-custom-scrollbar">
-				<table class="display table table-striped" id="datos">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Cantidad</th>
-						<th scope="col">Proveedor</th>
-						<th scope="col">Fecha</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($this->entradas as $entra) { ?>
-					<tr>
-						<th scope="row"><?php echo $entra['id']; ?></th>
-						<td><?php echo $entra['cantidad']; ?></td>
-						<td><?php echo $entra['proveedor']; ?></td>
-						<td><?php echo $entra['fecha']; ?></td>
-					</tr>
-				<?php } ?>
-				</tbody>
-				</table>
-		</div>
+<div class="container collapse mt-2 p-3" style=" background: #EEE8E2;" id="llegadas">
+		<table class="display table table-striped" id="prueba">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Cantidad</th>
+				<th scope="col">Proveedor</th>
+				<th scope="col">Fecha</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($this->entradas as $entra) { ?>
+			<tr>
+				<th scope="row"><?php echo $entra['id']; ?></th>
+				<td><?php echo $entra['cantidad']; ?></td>
+				<td><?php echo $entra['proveedor']; ?></td>
+				<td><?php echo $entra['fecha']; ?></td>
+			</tr>
+		<?php } ?>
+		</tbody>
+		</table>
 </div>
 
+<!-- TABLA DE Fincas -->
+<div class="container collapse mt-2 p-3" style=" background: #EEE8E2;" id="fincas">
+		<table class="display table table-striped" id="prueba2">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Direccion</th>
+				<th scope="col">Encargado</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($this->fincas as $finca) { ?>
+			<tr>
+				<th scope="row"><?php echo $finca->getId(); ?></th>
+				<td><?php echo $finca->getNombre(); ?></td>
+				<td><?php echo $finca->getDireccion(); ?></td>
+				<td><?php echo $finca->getPropietario(); ?></td>
+			</tr>
+		<?php } ?>
+		</tbody>
+		</table>
+</div>
 
-<script language="javascript">
-		function doSearch()
-		{
-			var tableReg = document.getElementById('datos');
-			var searchText = document.getElementById('searchTerm').value.toLowerCase();
-			var cellsOfRow="";
-			var found=false;
-			var compareWith="";
-
-			// Recorremos todas las filas con contenido de la tabla
-			for (var i = 1; i < tableReg.rows.length; i++)
-			{
-				cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
-				found = false;
-				// Recorremos todas las celdas
-				for (var j = 0; j < cellsOfRow.length && !found; j++)
-				{
-					compareWith = cellsOfRow[j].innerHTML.toLowerCase();
-					// Buscamos el texto en el contenido de la celda
-					if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
-					{
-						found = true;
-					}
-				}
-				if(found)
-				{
-					tableReg.rows[i].style.display = '';
-				} else {
-					// si no ha encontrado ninguna coincidencia, esconde la
-					// fila de la tabla
-					tableReg.rows[i].style.display = 'none';
-				}
-			}
-		}
-	</script>
 <div class="container">
   <div class="p-3 row container">
     <div class=" col-6 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -152,32 +137,7 @@
           </div><br>
       </div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-        <div class="container ">
-          <form>
-            Buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
-          </form>
 
-          <table class="table table-striped" id="datos">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Proveedor</th>
-              <th scope="col">Fecha</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($this->entradas as $entra) { ?>
-            <tr>
-              <th scope="row"><?php echo $entra['id']; ?></th>
-              <td><?php echo $entra['cantidad']; ?></td>
-              <td><?php echo $entra['proveedor']; ?></td>
-              <td><?php echo $entra['fecha']; ?></td>
-            </tr>
-        <?php } ?>
-          </tbody>
-        </table>
-        </div>
       </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
         <div class=" container border border-success" >
