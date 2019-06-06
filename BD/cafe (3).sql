@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2019 a las 00:35:58
+-- Tiempo de generación: 06-06-2019 a las 16:02:54
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -41,7 +41,14 @@ CREATE TABLE `almacen` (
 --
 
 INSERT INTO `almacen` (`id`, `entrada`, `calidad`, `cafe_tipo`, `cantidad`) VALUES
-(3, 13, '2', '2', 555);
+(3, 13, '2', '2', 555),
+(6, 15, '1', '2', 555),
+(7, 15, '1', '1', 10000),
+(8, 15, '1', '1', 40000),
+(9, 16, '1', '1', 90000),
+(10, 14, '1', '2', 120),
+(11, 16, '1', '1', 5000),
+(12, 17, '1', '1', 88);
 
 -- --------------------------------------------------------
 
@@ -112,8 +119,19 @@ INSERT INTO `entrada_cafe` (`id`, `cant_cafe`, `procedencia`, `fecha_ingreso`) V
 (11, 123, 1, '2019-05-14 20:43:00'),
 (12, 123, 1, '2019-05-14 22:33:00'),
 (13, 55000, 1, '2019-05-14 22:47:00'),
-(14, 123, 3, '2019-05-14 23:18:00'),
-(15, 55555, 3, '2019-05-14 23:20:00');
+(14, 3, 3, '2019-05-14 23:18:00'),
+(15, 5000, 3, '2019-05-14 23:20:00'),
+(16, 5000, 2, '2019-05-15 00:40:00'),
+(17, 1, 2, '2019-05-29 04:06:00'),
+(18, 40000, 3, '2019-05-31 06:20:00'),
+(19, 456, 2, '2019-05-31 07:04:00'),
+(20, 3123, 1, '2019-05-31 07:12:00'),
+(21, 123123, 1, '2019-05-31 07:12:00'),
+(22, 1231321, 1, '2019-05-31 07:12:00'),
+(23, 2147483647, 1, '2019-05-31 07:12:00'),
+(24, 1312313131, 1, '2019-05-31 07:12:00'),
+(25, 131213, 1, '2019-05-31 07:12:00'),
+(26, 123, 2, '2019-05-31 19:48:00');
 
 -- --------------------------------------------------------
 
@@ -281,7 +299,7 @@ ALTER TABLE `tipo_secado`
 -- AUTO_INCREMENT de la tabla `almacen`
 --
 ALTER TABLE `almacen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `empaquetado`
@@ -293,7 +311,7 @@ ALTER TABLE `empaquetado`
 -- AUTO_INCREMENT de la tabla `entrada_cafe`
 --
 ALTER TABLE `entrada_cafe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `finca`
