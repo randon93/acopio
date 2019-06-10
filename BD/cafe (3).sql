@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2019 a las 16:02:54
+-- Tiempo de generación: 10-06-2019 a las 17:07:51
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cafe`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `administrador`
+--
+
+CREATE TABLE `administrador` (
+  `cedula` varchar(10) NOT NULL,
+  `PASSWORD` varchar(10) NOT NULL,
+  `seccion` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`cedula`, `PASSWORD`, `seccion`) VALUES
+('1090464770', '123456789', 'recibidor');
 
 -- --------------------------------------------------------
 
@@ -151,9 +170,10 @@ CREATE TABLE `finca` (
 --
 
 INSERT INTO `finca` (`nombre`, `id`, `direccion`, `propietario`) VALUES
-('gerson con sida', 1, 'calle falsa 123', 'gersiton el gordis'),
+('gerson con dasi', 1, 'calle falsa 123', 'gersiton el gordis'),
 ('bradon', 2, 'no se', 'javier'),
-('fanny', 3, 'tampoco se', 'carmen');
+('fanny', 3, 'tampoco se', 'carmen'),
+('bartronik', 4, 'no me lase', 'brayan');
 
 -- --------------------------------------------------------
 
@@ -185,6 +205,7 @@ CREATE TABLE `tipo_cafe` (
 
 INSERT INTO `tipo_cafe` (`id`, `descripcion`) VALUES
 ('1', 'Blanco'),
+('12', 'GRIS'),
 ('2', 'Negro');
 
 -- --------------------------------------------------------
@@ -198,6 +219,13 @@ CREATE TABLE `tipo_paca` (
   `peso` int(11) DEFAULT NULL,
   `material` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_paca`
+--
+
+INSERT INTO `tipo_paca` (`id`, `peso`, `material`) VALUES
+('54', 500, 'poapel');
 
 -- --------------------------------------------------------
 
@@ -214,6 +242,12 @@ CREATE TABLE `tipo_secado` (
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `administrador`
+--
+ALTER TABLE `administrador`
+  ADD PRIMARY KEY (`cedula`);
 
 --
 -- Indices de la tabla `almacen`
@@ -317,7 +351,7 @@ ALTER TABLE `entrada_cafe`
 -- AUTO_INCREMENT de la tabla `finca`
 --
 ALTER TABLE `finca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `secado_limpieza`
