@@ -62,5 +62,23 @@ class RecibidorModel extends Modelo {
     return false;
   }
 
+  public function aggFinca($nombre, $direccion, $propietario)  {
+    $con = $this->bd->conectar();
+    $consultar = $con ->prepare("INSERT INTO `finca`(`nombre`, `direccion`, `propietario`) VALUES (:nombre, :direccion, :propietario)");
+    $consultar -> execute( array(":nombre"=>$nombre, ":direccion"=>$direccion, ":propietario"=>$propietario) );
+  }
+
+  public function aggCafe($id, $descripcion)  {
+    $con = $this->bd->conectar();
+    $consultar = $con -> prepare("INSERT INTO `tipo_cafe`(`id`, `descripcion`) VALUES (:id, :descripcion)");
+    $consultar -> execute( array(":id"=>$id, ":descripcion"=>$descripcion) );
+  }
+
+  public function aggPaca($id, $peso, $material)  {
+    $con = $this->bd->conectar();
+    $consultar = $con -> prepare("INSERT INTO `tipo_paca`(`id`, `peso`, `material`) VALUES (:id,:peso,:material)");
+    $consultar -> execute( array(":id"=>$id, ":peso"=>$peso, ":material"=>$material) );
+  }
+
 }
  ?>

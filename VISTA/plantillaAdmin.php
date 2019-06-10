@@ -32,7 +32,8 @@
       <?php
       include "encabezado.php";
       $vista = constant('VISTA');
-      include "ADMINISTRADOR/$vista/$vista.php";
+      $carpeta = constant('CARPETA');
+      include "$carpeta/index$vista.php";
       ?>
     </div>
 

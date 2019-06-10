@@ -1,9 +1,9 @@
 <?php /**
  *
  */
-class VistaModel extends Modelo{
+class VistasModel extends Modelo{
 
-  function __construct()  {
+  function __construct()  { echo "creando vista model";
     parent::__construct();
   }
 
