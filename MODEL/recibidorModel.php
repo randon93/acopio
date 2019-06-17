@@ -80,5 +80,11 @@ class RecibidorModel extends Modelo {
     $consultar -> execute( array(":id"=>$id, ":peso"=>$peso, ":material"=>$material) );
   }
 
+  public function procesar($cantidad,$entrada,$tipoP)  {
+    $con = $this->bd->conectar();
+    $consultar = $con -> prepare("INSERT INTO `secado_limpieza`( `tipo`, `cant_cafe`, `cafe_almacen`) VALUES (:tipo, :cantidad, :entrada)");
+    
+    $consultar -> execute( array(":tipo"=>$tipoP, ":cantidad"=>$cantidad, ":entrada"=>$entrada) );
+  }
 }
  ?>

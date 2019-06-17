@@ -31,9 +31,9 @@ class Router {
       $nom = "$url[0]Controlador";
       $ctr = new $nom;
       $ctr->CrearModelo($url[0]);
-      if ( isset($url[1]) ) { echo "<h1>BUSCO MEDTODO</h1>";
+      if ( isset($url[1]) ) { //echo "<h1>BUSCO MEDTODO</h1>";
         $ctr->{$url[1]}();
-      }else{echo "BUSCO VISTA";
+      }else{//echo "BUSCO VISTA";
         require_once "CONTROLADOR/vistasControlador.php";
         $ctrV = new vistasControlador();
         $ctrV -> CrearModelo("vistas");
@@ -50,7 +50,7 @@ class Router {
   }
 
   private function sesionOff(){
-    $url = isset($_GET['url']) ? $_GET['url']: 'login';
+    $url = isset($_GET['url']) ? $_GET['url']: 'inicio';
     $url = rtrim($url, '/');
     $url = explode('/', $url);
     require_once "CONTROLADOR/$url[0]Controlador.php";

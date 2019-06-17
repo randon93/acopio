@@ -14,7 +14,7 @@ class loginControlador extends Controlador{
       $user = $this->getCtrModel()->login($user, $password);
       if ( $user ) {
        $seccion = $_SESSION['USER']['seccion'];
-       header("Location:  http://127.0.0.1/acopio/vistas/$seccion");
+       header("Location:  http://127.0.0.1/acopio/vistas/recibidor");
          //echo " -- ".$_SESSION['USER']['cedula'];
         // echo "<h1>".$_SESSION['TIPO']."</h1>";
       }else{

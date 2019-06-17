@@ -8,52 +8,78 @@ class RecibidorControlador extends Controlador{
   }
 
   public function registrarEntradaCafe() {
-    $cantidadCafe = (int) $_POST['cantidad'];
-    $procedencia = $_POST['proveedor'];
-    if ( $cantidadCafe > 0 ) {
-          $this->getModelCtr()->registrarEntradaCafe($cantidadCafe, $procedencia);
-          header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
-    }else{
-          $this->getVistaCtr()->msj = "no se registro la entrada";
-          header('Location:  http://127.0.0.1/acopio/vistas/error');
+    if ( $_SESSION['TIPO'] == "RECIBIDOR" OR $_SESSION['TIPO'] == "ADMINISTRADOR" ) {
+      $cantidadCafe = (int) $_POST['cantidad'];
+      $procedencia = $_POST['proveedor'];
+      if ( $cantidadCafe > 0 ) {
+            $this->getCtrModel()->registrarEntradaCafe($cantidadCafe, $procedencia);
+            header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+        }else{
+            $this->getCtrVista()->msj = "no se registro la entrada";
+            header('Location:  http://127.0.0.1/acopio/vistas/error');
+      }
     }
+    header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
   }
 
   public function almacenar()  {
-    $entrada = $_POST['entrada'];
-    $calidad = $_POST['calidad'];
-    $cafe_tipo = $_POST['cafe_tipo'];
-    $cantidad = $_POST['cantidad'];
-    // echo "<h1>$entrada -- $calidad -- $cafe_tipo -- $cantidad</h1>";
-    if ( $cantidad > 0 ) {
-      if ( $this->getModelCtr()->almacenar($entrada, $calidad, $cafe_tipo, $cantidad) ) {
-        header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
-      }
-      // echo "<h1>hola</h1>";
+    if ( $_SESSION['TIPO'] == "RECIBIDOR" OR $_SESSION['TIPO'] == "ADMINISTRADOR" ) {
+        $entrada = $_POST['entrada'];
+        $calidad = $_POST['calidad'];
+        $cafe_tipo = $_POST['cafe_tipo'];
+        $cantidad = $_POST['cantidad'];
+        // echo "<h1>$entrada -- $calidad -- $cafe_tipo -- $cantidad</h1>";
+        if ( $cantidad > 0 ) {
+          if ( $this->getCtrModel()->almacenar($entrada, $calidad, $cafe_tipo, $cantidad) ) {
+            header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+          }
+          // echo "<h1>hola</h1>";
+        }
+        // echo "<h1>hola</h1>";
     }
-    // echo "<h1>hola</h1>";
+    header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
   }
 
   public function aggFinca()  {
-    $nombre = $_POST['nombre'];
-    $direccion = $_POST['direccion'];
-    $propietario = $_POST['propietario'];
-    $this->getCtrModel()->aggFinca($nombre, $direccion, $propietario);
+    if ( $_SESSION['TIPO'] == "ADMINISTRADOR" ) {
+      $nombre = $_POST['nombre'];
+      $direccion = $_POST['direccion'];
+      $propietario = $_POST['propietario'];
+      $this->getCtrModel()->aggFinca($nombre, $direccion, $propietario);
+      header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    }
     header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
   }
 
   public function aggCafe()  {
-    $id = $_POST['id'];
-    $descripcion = $_POST['descripcion'];
-    $this->getCtrModel()->aggCafe($id, $descripcion);
+    if (  $_SESSION['TIPO'] == "ADMINISTRADOR" ) {
+      $id = $_POST['id'];
+      $descripcion = $_POST['descripcion'];
+      $this->getCtrModel()->aggCafe($id, $descripcion);
+      header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    }
     header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
   }
 
   public function aggPaca()  {
-    $id = $_POST['id'];
-    $peso = $_POST['peso'];
-    $material= $_POST['material'];
-    $this->getCtrModel()->aggPaca($id, $peso, $material);
+    if ( $_SESSION['TIPO'] == "ADMINISTRADOR" ) {
+      $id = $_POST['id'];
+      $peso = $_POST['peso'];
+      $material= $_POST['material'];
+      $this->getCtrModel()->aggPaca($id, $peso, $material);
+      header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    }
+    header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+  }
+
+  public function procesar()  {
+    if ( $_SESSION['TIPO'] == "PROCESOS" OR $_SESSION['TIPO'] == "ADMINISTRADOR" ) {
+      $cantidad = $_POST['cantidad'];
+      $entrada = $_POST['entrada'];
+      $tipoP = $_POST['tipoP'];
+      $this->getCtrModel()->procesar($cantidad,$entrada,$tipoP);
+      header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    }
     header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
   }
 

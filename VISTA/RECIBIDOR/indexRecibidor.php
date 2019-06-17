@@ -1,253 +1,353 @@
-<header id="header">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10">
-				<h1><i class="fas fa-cog"></i> Administrar Almacen</h1>
-			</div>
-			<div class="col-md-2">
-				<button type="button" class="btn btn-outline-light " data-toggle="modal"
-					data-target="#modalSesion">Cerrar Sesion</button>
-			</div>
-		</div>
-	</div>
-</header>
-
-<!-- VISTA RAPIDA -->
-<div class="container">
+<section class="content">
 	<div class="row">
-		<div class="col-md-4">
-			<div class="list-group">
-				<h6 class="list-group-item">Nombre del Encargado de Almacen</h6>
-				<h6 class="list-group-item">fecha actual</h6>
-			</div>
-		</div>
-		<div class="col-md-8">
-			<div class="panel panel-default">
-				<div class="panel-heading main-color-bg">
-					<h3 class="panel-title">Vista Rápida</h3>
-				</div>
-				<div class="panel-body row">
-					<div class="col-md-3">
-						<div class="card card-body dash-box ">
-							<a style="text-decoration:none;" data-toggle="collapse" href="#llegadas" role="button"
-								aria-expanded="true" aria-controls="llegadas">
-								<h2><i class="fas fa-truck"></i> <?php echo count($this->entradas); ?></h2>
-								<h4>Entradas</h4>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card card-body dash-box">
-							<a style="text-decoration:none;" data-toggle="collapse" href="#fincas" role="button"
-								aria-expanded="true" aria-controls="fincas">
-								<h2><i class="fas fa-city"></i> <?php echo count($this->fincas); ?></h2>
-								<h4>Fincas</h4>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card card-body dash-box">
-							<h2><i class="fas fa-cube"></i> 508</h2>
-							<h5>Almacenado</h5>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card card-body dash-box">
-							<h2><i class="fas fa-cubes"></i> 508</h2>
-							<h4>Clasificado</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- TABLA DE LLEGADAS -->
-<div class="container collapse mt-2 p-3" style=" background: #EEE8E2;" id="llegadas">
-	<table class="display table table-striped" id="prueba">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Cantidad</th>
-				<th scope="col">Proveedor</th>
-				<th scope="col">Fecha</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($this->entradas as $entra) { ?>
-			<tr>
-				<th scope="row"><?php echo $entra['id']; ?></th>
-				<td><?php echo $entra['cantidad']; ?></td>
-				<td><?php echo $entra['proveedor']; ?></td>
-				<td><?php echo $entra['fecha']; ?></td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-</div>
-
-<!-- TABLA DE Fincas -->
-<div class="container collapse mt-2 p-3" style=" background: #EEE8E2;" id="fincas">
-	<table class="display table table-striped" id="prueba2">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Nombre</th>
-				<th scope="col">Direccion</th>
-				<th scope="col">Encargado</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($this->fincas as $finca) { ?>
-			<tr>
-				<th scope="row"><?php echo $finca->getId(); ?></th>
-				<td><?php echo $finca->getNombre(); ?></td>
-				<td><?php echo $finca->getDireccion(); ?></td>
-				<td><?php echo $finca->getPropietario(); ?></td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-</div>
-
-<div class="container">
-	<div class="p-3 row container">
 		<div class=" col-6 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-			<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-				aria-controls="v-pills-home" aria-selected="true"><h4>Entrada de Producto</h4></a>
-			<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
-				aria-controls="v-pills-messages" aria-selected="false"><h4>Almacenar Producto</h4></a>
-			<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-				aria-controls="v-pills-profile" aria-selected="false"><h4>Agregar Finca</h4></a>
-			<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-cafe" role="tab"
-				aria-controls="v-pills-settings" aria-selected="false"><h4>Agregar Tipo Cafe</h4></a>
-				<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-paca" role="tab"
-				aria-controls="v-pills-settings" aria-selected="false"><h4>Agregar Tipo Paca</h4></a>
-		</div>
-		<div class="tab-content  col-6" id="v-pills-tabContent">
-			<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-				<div class=" container border border-success p-3" style="background: #AA5B18; opacity: 0.9;"  >
-					<form action="<?php echo constant('URL');?>recibidor/registrarEntradaCafe" method="POST">
-						<div class="form-group">
-							<label for="formGroupExampleInput">Cantidad Cafe</label>
-							<input type="text" class="form-control" name="cantidad" id="formGroupExampleInput"
-								placeholder="Peso en Kilos (Kg)" onkeypress="return justNumbers(event);">
-						</div>
-						<div class="form-group">
-							<label>Fincas: </label>
-							<select class="form-control" name="proveedor">
-								<?php foreach ($this->fincas as $finc) {?>
-								<option value="<?php echo $finc->getId();?>"><?php echo $finc->getNombre(); ?></option>
-								<?php } ?>
-							</select>
-						</div>
-						<input type="submit" class="btn btn-primary" value="INGRESAR">
-					</form>
-				</div><br>
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-aqua">
+					<div class="inner">
+						<h3><?php echo count($this->entradas); ?></h3>
+
+						<p><a href="#" class="small-box-footer" data-toggle="modal" data-target="#modalEntrada">Nueva
+								Entrada <i class="fa fa-arrow-circle-right"></i></a></p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-bag"></i>
+					</div>
+					<a href="#" class="small-box-footer" data-toggle="modal" data-target="#modalEntrada">More info <i
+							class="fa fa-arrow-circle-right"></i></a>
+
+				</div>
 			</div>
-			<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-				<div class=" container border border-success p-3" style="background: #AA5B18; opacity: 0.9;"  >
-					<form action="<?php echo constant('URL');?>recibidor/aggFinca" method="POST">
-						<div class="form-group">
-							<h4><label for="formGroupExampleInput">Nombre</label></h4>
-							<input type="text" class="form-control" name="nombre" id="formGroupExampleInput"
-								placeholder="Nombre Finca" >
-						</div>
-						<div class="form-group">
-							<h4><label for="formGroupExampleInput">Direccion</label></h4>
-							<input type="text" class="form-control" name="direccion" id="formGroupExampleInput"
-								placeholder="Direccion Finca" >
-						</div>
-						<div class="form-group">
-							<h4><label for="formGroupExampleInput">Propietario</label></h4>
-							<input type="text" class="form-control" name="propietario" id="formGroupExampleInput"
-								placeholder="Propietario" >
-						</div>
-						
-						<input type="submit" class="btn btn-primary" value="INGRESAR">
-					</form>
-				</div><br>
+			<!-- ./col -->
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-green">
+					<div class="inner">
+						<h3><?php $cant = 0; foreach ($this->almacen as $value) {
+							$cant = $cant + $value['cantidad'];
+						} echo $cant; ?><sup style="font-size: 20px"> Kg</sup></h3>
+
+						<p>Almacen</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-stats-bars"></i>
+					</div>
+					<a href="#" class="small-box-footer" data-toggle="modal" data-target="#modalAlmacen">More info <i
+							class="fa fa-arrow-circle-right"></i></a>
+				</div>
 			</div>
-			<div class="tab-pane fade" id="v-pills-cafe" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-				<div class=" container border border-success p-3" style="background: #AA5B18; opacity: 0.9;"  >
-					<form action="<?php echo constant('URL');?>recibidor/aggCafe" method="POST">
-						<div class="form-group">
-							<h4><label for="formGroupExampleInput">Id Cafe</label></h4>
-							<input type="text" class="form-control" name="id" id="formGroupExampleInput"
-								placeholder="Nombre Finca" onkeypress="return justNumbers(event);">
-						</div>
-						<div class="form-group">
-							<h4><label for="formGroupExampleInput">Nombre de Cafe</label></h4>
-							<input type="text" class="form-control" name="descripcion" id="formGroupExampleInput"
-								placeholder="Direccion Finca" >
-						</div>
-						<input type="submit" class="btn btn-primary" value="INGRESAR">
-					</form>
-				</div><br>
+			<!-- ./col -->
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-yellow">
+					<div class="inner">
+						<h3><?php echo count($this->fincas); ?></h3>
+
+						<p>Registrar Finca</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-person-add"></i>
+					</div>
+					<a href="#" class="small-box-footer" data-toggle="modal" data-target="#modalFinca">More info <i
+							class="fa fa-arrow-circle-right"></i></a>
+				</div>
 			</div>
-			<div class="tab-pane fade" id="v-pills-paca" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-				<div class=" container border border-success p-3" style="background: #AA5B18; opacity: 0.9;"  >
-					<form action="<?php echo constant('URL');?>recibidor/aggPaca" method="POST">
-						<div class="form-group">
-							<h4><label for="formGroupExampleInput">Id Paca</label></h4>
-							<input type="text" class="form-control" name="id" id="formGroupExampleInput"
-								placeholder="Nombre Finca" onkeypress="return justNumbers(event);">
-						</div>
-						<div class="form-group">
-							<h4><label for="formGroupExampleInput">Peso de Paca</label></h4>
-							<input type="text" class="form-control" name="peso" id="formGroupExampleInput"
-								placeholder="Direccion Finca" >
-						</div>
-						<div class="form-group">
-							<h4><label for="formGroupExampleInput">Material de Paca</label></h4>
-							<input type="text" class="form-control" name="material" id="formGroupExampleInput"
-								placeholder="Direccion Finca" >
-						</div>
-						<input type="submit" class="btn btn-primary" value="INGRESAR">
-					</form>
-				</div><br>
+			<!-- ./col -->
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-red">
+					<div class="inner">
+						<h3>65</h3>
+
+						<p>Unique Visitors</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-pie-graph"></i>
+					</div>
+					<a href="#" class="small-box-footer" data-toggle="modal" data-target="#modalProceso">More info <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
 			</div>
-			<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-				<div class=" container border border-success p-3" style="background: #AA5B18; opacity: 0.9;"  >
-					<form action="<?php echo constant('URL');?>recibidor/almacenar" method="POST">
-						<div class="form-group">
-							<label for="formGroupExampleInput">Cantidad Cafe</label>
-							<input type="text" class="form-control" name="cantidad" id="formGroupExampleInput"
-								placeholder="Peso en Kilos (Kg)" onkeypress="return justNumbers(event);">
-						</div>
-						<div class="form-group">
-							<label>Entrada: </label>
-							<select class="form-control" name="entrada">
-								<?php foreach ($this->entradas as $entra) {?>
-								<option value="<?php echo $entra['id'];?>">
-									<?php echo $entra['id']." - ".$entra['proveedor'] ." - ". $entra['cantidad']; ?>
-								</option>
-								<?php } ?>
-							</select>
-						</div>
-						<div class="form-group">
-							<label>Calidad: </label>
-							<select class="form-control" name="calidad">
-								<?php foreach ($this->calidades as $calidad) {?>
-								<option value="<?php echo $calidad['id'];?>"><?php echo $calidad['nombre']; ?></option>
-								<?php } ?>
-							</select>
-						</div>
-						<div class="form-group">
-							<label>Tipo: </label>
-							<select class="form-control" name="cafe_tipo">
-								<?php foreach ($this->cafes as $cafe) {?>
-								<option value="<?php echo $cafe['id'];?>"><?php echo $cafe['nombre']; ?></option>
-								<?php } ?>
-							</select>
-						</div>
-						<input type="submit" class="btn btn-primary" value="INGRESAR">
-					</form>
-				</div><br>
-			</div>
-			<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">prro
-			</div>
+			<!-- ./col -->
 		</div>
 	</div>
+</section>
+
+<!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- AREA CHART -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Area Chart</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <canvas id="areaChart" style="height:250px"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Entradas Por Fincas</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <canvas id="pieChart" style="height:250px"></canvas>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        </div>
+        <!-- /.col (LEFT) -->
+        <div class="col-md-6">
+          <!-- LINE CHART -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Line Chart</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <canvas id="lineChart" style="height:250px"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Calidad de Producto por Finca</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <canvas id="barChart" style="height:230px"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        </div>
+        <!-- /.col (RIGHT) -->
+      </div>
+      <!-- /.row -->
+
+    </section>
+<!--  
+	|	        |
+		MODALS
+	|		   |    -->
+
+
+<div class="modal modal-warning fade" id="modalFinca">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Success Modal</h4>
+			</div>
+			<div class="modal-body">
+				<form action="<?php echo constant('URL');?>recibidor/aggFinca" method="POST">
+					<div class="form-group">
+						<h4><label for="formGroupExampleInput">Nombre</label></h4>
+						<input type="text" class="form-control" name="nombre" id="formGroupExampleInput"
+							placeholder="Nombre Finca">
+					</div>
+					<div class="form-group">
+						<h4><label for="formGroupExampleInput">Direccion</label></h4>
+						<input type="text" class="form-control" name="direccion" id="formGroupExampleInput"
+							placeholder="Direccion Finca">
+					</div>
+					<div class="form-group">
+						<h4><label for="formGroupExampleInput">Propietario</label></h4>
+						<input type="text" class="form-control" name="propietario" id="formGroupExampleInput"
+							placeholder="Propietario">
+					</div>
+
+					<input type="submit" class="btn btn-primary" value="INGRESAR">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-outline">Save changes</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
 </div>
+<!-- /.modal -->
+
+
+<div class="modal modal-info fade" id="modalEntrada">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Success Modal</h4>
+			</div>
+			<div class="modal-body">
+				<form action="<?php echo constant('URL');?>recibidor/registrarEntradaCafe" method="POST">
+					<div class="form-group">
+						<label for="formGroupExampleInput">
+							<h2>Cantidad Cafe</h2>
+						</label>
+						<input type="text" class="form-control" name="cantidad" id="formGroupExampleInput"
+							placeholder="Peso en Kilos (Kg)" onkeypress="return justNumbers(event);">
+					</div>
+					<div class="form-group">
+						<label>
+							<h2>Fincas: </h2>
+						</label>
+						<select class="form-control" name="proveedor">
+							<?php foreach ($this->fincas as $finc) {?>
+							<option value="<?php echo $finc->getId();?>"><?php echo $finc->getNombre(); ?>
+							</option>
+							<?php } ?>
+						</select>
+					</div>
+					<input type="submit" class="btn btn-primary" value="INGRESAR">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-outline">Save changes</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div class="modal modal-success fade" id="modalAlmacen">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Success Modal</h4>
+			</div>
+			<div class="modal-body">
+				<form action="<?php echo constant('URL');?>recibidor/almacenar" method="POST">
+					<div class="form-group">
+						<label for="formGroupExampleInput">Cantidad Cafe</label>
+						<input type="text" class="form-control" name="cantidad" id="formGroupExampleInput"
+							placeholder="Peso en Kilos (Kg)" onkeypress="return justNumbers(event);">
+					</div>
+					<div class="form-group">
+						<label>Entrada: </label>
+						<select class="form-control" name="entrada">
+							<?php foreach ($this->entradas as $entra) {?>
+							<option value="<?php echo $entra['id'];?>">
+								<?php echo $entra['id']." - ".$entra['proveedor'] ." - ". $entra['cantidad']; ?>
+							</option>
+							<?php } ?>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Calidad: </label>
+						<select class="form-control" name="calidad">
+							<?php foreach ($this->calidades as $calidad) {?>
+							<option value="<?php echo $calidad['id'];?>"><?php echo $calidad['nombre']; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Tipo: </label>
+						<select class="form-control" name="cafe_tipo">
+							<?php foreach ($this->cafes as $cafe) {?>
+							<option value="<?php echo $cafe['id'];?>"><?php echo $cafe['nombre']; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<input type="submit" class="btn btn-primary" value="INGRESAR">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-outline">Save changes</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div class="modal modal-danger fade" id="modalProceso">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Asignar Proceso a Cafe</h4>
+			</div>
+			<div class="modal-body">
+				<form action="<?php echo constant('URL');?>recibidor/procesar" method="POST">
+					<div class="form-group">
+						<label for="formGroupExampleInput">Cantidad Cafe</label>
+						<input type="text" class="form-control" name="cantidad" id="formGroupExampleInput"
+							placeholder="Peso en Kilos (Kg)" onkeypress="return justNumbers(event);">
+					</div>
+					<div class="form-group">
+						<label>Entrada: </label>
+						<select class="form-control" name="entrada">
+							<?php foreach ($this->almacenes as $alma) {?>
+							<option value="<?php echo $alma['id'];?>"><?php echo $alma['entrada'] ." - ". $alma['cantidad']; ?>	</option>
+							<?php } ?>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Tipo: </label>
+						<select class="form-control" name="tipoP">
+							<?php foreach ($this->tipoP as $tipo) {?>
+							<option value="<?php echo $tipo['id'];?>"><?php echo $tipo['nombre'] . " - " . $tipo['tiempo'] . " Horas";?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<input type="submit" class="btn btn-primary" value="INGRESAR">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-outline">Save changes</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
