@@ -20,7 +20,7 @@ class Router {
   }
 
   private function sesionOn(){//echo "----sesion On";
-    $url = isset($_GET['url']) ? $_GET['url']: $_SESSION['TIPO'];
+    $url = isset($_GET['url']) ? $_GET['url']: "recibidor";
     $url = rtrim($url, '/');
     $url = explode('/', $url);
    //echo $url[0];
@@ -41,11 +41,11 @@ class Router {
         $ctrV -> {$url[0]}();
       }
     }else {
-      require_once "CONTROLADOR/errorControlador.php";
-      $nom = "erroresControlador";
+      require_once "CONTROLADOR/vistasControlador.php";
+      $nom = "vistasControlador";
       $ctr = new $nom;
-      $ctr->mensaje("Tiene sesion iniciada como $_SESSION[TIPO]: ".$_SESSION['USER']->getNombre());
-      echo "<a href=".constant('URL').">HOME</a>";
+      $ctr->error();
+      // echo "<a href=".constant('URL').">HOME</a>";
     }
   }
 
@@ -61,7 +61,7 @@ class Router {
     if ( isset($url[1]) ) { //echo "******busco metodos";
       $ctr->{$url[1]}();
     }else{
-      $ctr -> getCtrVista() -> render($url[0]);
+      $ctr -> getCtrVista() -> renderI($url[0]);
     }
     return false;
   }

@@ -19,7 +19,7 @@ class RecibidorControlador extends Controlador{
             header('Location:  http://127.0.0.1/acopio/vistas/error');
       }
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
   public function almacenar()  {
@@ -37,7 +37,7 @@ class RecibidorControlador extends Controlador{
         }
         // echo "<h1>hola</h1>";
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
   public function aggFinca()  {
@@ -48,7 +48,7 @@ class RecibidorControlador extends Controlador{
       $this->getCtrModel()->aggFinca($nombre, $direccion, $propietario);
       header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
   public function aggCafe()  {
@@ -58,7 +58,7 @@ class RecibidorControlador extends Controlador{
       $this->getCtrModel()->aggCafe($id, $descripcion);
       header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
   public function aggPaca()  {
@@ -69,7 +69,7 @@ class RecibidorControlador extends Controlador{
       $this->getCtrModel()->aggPaca($id, $peso, $material);
       header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
   public function procesar()  {
@@ -80,7 +80,7 @@ class RecibidorControlador extends Controlador{
       $this->getCtrModel()->procesar($cantidad,$entrada,$tipoP);
       header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
 

@@ -24,6 +24,7 @@ class vistasControlador extends Controlador{
     $this->getCtrVista()->fincas = $this->getCtrModel()->listFincas();
     $this->getCtrVista()->entradas = $this->getCtrModel()->listEntradas();
     $this->getCtrVista()->proceso = $this->getCtrModel()->proceso();
+    $this->getCtrVista()->almacen = $this->getCtrModel()->listAlmacen();
     $this->getCtrVista()->renderD("recibidor","tabla");
   }
 
@@ -35,7 +36,13 @@ class vistasControlador extends Controlador{
     $this->getCtrVista()->render("proceso");
   }
   public function error()  {
-    $this->getVistaCtr()->render("error");
+    if ( isset($_GET['msj']) ) {
+      $this->getCtrVista()->mensaje = $_GET['msj'];
+    }else{
+      $this->getCtrVista()->mensaje = "Ha ocurrido un error, 404!!";
+    }
+    
+    $this->getCtrVista()->renderI("error");
   }
 
   public function inicioAdmin()  {

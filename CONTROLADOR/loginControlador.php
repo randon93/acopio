@@ -18,8 +18,8 @@ class loginControlador extends Controlador{
          //echo " -- ".$_SESSION['USER']['cedula'];
         // echo "<h1>".$_SESSION['TIPO']."</h1>";
       }else{
-        echo "errorcito";
-        // header('Location:  http://127.0.0.1/clinicaOdonto/vistas/error');
+        //echo "errorcito";
+        header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Usuario y/o Contraseña Errada');
       }
 
     }

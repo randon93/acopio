@@ -71,8 +71,8 @@ class VistasModel extends Modelo{
     $consulta -> execute();
     $array = [];
     foreach ($consulta as $calidad) {
-      $cali = [ "id"=>$calidad['id'], "entrada"=>$calidad['entrada'], "calidad"=>$calidad['calidad'], "cafe_tipo"=>$calidad['cafe_tipo'], "cantidad"=>$calidad['cantidad'], "procedencia"=>$calidad['procedencia'] ];
-      array_push($array, $cali);
+      // $cali = [ "id"=>$calidad['id'], "entrada"=>$calidad['entrada'], "calidad"=>$calidad['calidad'], "cafe_tipo"=>$calidad['cafe_tipo'], "cantidad"=>$calidad['cantidad'], "procedencia"=>$calidad['procedencia'] ];
+      array_push($array, $calidad);
     }
     return $array;
   }

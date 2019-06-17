@@ -9,6 +9,8 @@ class Vista {
 
   public function render($vista) {//echo "<h1>entre</h1>";
     if ($vista == "inicio") {
+       define('VISTA', "login");
+        define('CARPETA', "login");
       require_once "VISTA/plantilla.php";
       }else{
         define('VISTA', $vista);
@@ -23,8 +25,10 @@ class Vista {
     require_once "VISTA/plantillaAdmin.php";
   }
 
-  public function rednerI()  {
-    # code...
+  public function renderI($vista)  {
+    define('VISTA', $vista);
+    define('CARPETA', $vista);
+    require_once "VISTA/plantilla.php";
   }
 }
  ?>
