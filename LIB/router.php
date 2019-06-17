@@ -23,7 +23,7 @@ class Router {
     $url = isset($_GET['url']) ? $_GET['url']: $_SESSION['TIPO'];
     $url = rtrim($url, '/');
     $url = explode('/', $url);
-   echo $url[0];
+   //echo $url[0];
   //  echo $url[1];
     $archivo = "CONTROLADOR/$url[0]Controlador.php";
     if ( file_exists($archivo) ) {
