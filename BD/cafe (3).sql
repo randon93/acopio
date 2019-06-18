@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-06-2019 a las 17:07:51
+-- Tiempo de generación: 18-06-2019 a las 06:40:13
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -31,15 +31,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `administrador` (
   `cedula` varchar(10) NOT NULL,
   `PASSWORD` varchar(10) NOT NULL,
-  `seccion` varchar(20) NOT NULL
+  `seccion` varchar(20) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `correo` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `administrador`
 --
 
-INSERT INTO `administrador` (`cedula`, `PASSWORD`, `seccion`) VALUES
-('1090464770', '123456789', 'recibidor');
+INSERT INTO `administrador` (`cedula`, `PASSWORD`, `seccion`, `nombre`, `correo`) VALUES
+('1090464770', '123456789', 'RECIBIDOR', 'brandon', 'brandon@gmail.com'),
+('1090464771', '123456789', 'PROCESOS', 'javier', 'javier@gmail.com'),
+('1090464772', '123456789', 'EMPAQUETADOR', 'brayan', 'brayan@gmail.com'),
+('5394127', '332817', 'ADMINISTRADOR', 'JAVIER BRANDON GARCIA', 'jbgm93@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -60,14 +65,14 @@ CREATE TABLE `almacen` (
 --
 
 INSERT INTO `almacen` (`id`, `entrada`, `calidad`, `cafe_tipo`, `cantidad`) VALUES
-(3, 13, '2', '2', 555),
-(6, 15, '1', '2', 555),
-(7, 15, '1', '1', 10000),
-(8, 15, '1', '1', 40000),
-(9, 16, '1', '1', 90000),
-(10, 14, '1', '2', 120),
-(11, 16, '1', '1', 5000),
-(12, 17, '1', '1', 88);
+(26, 39, '1', '1', 100),
+(27, 39, '2', '1', 900),
+(28, 38, '1', '1', 400),
+(29, 39, '2', '1', 50),
+(30, 42, '1', '1', 1000),
+(31, 42, '2', '1', 500),
+(32, 37, '1', '1', 5),
+(33, 39, '1', '1', 951);
 
 -- --------------------------------------------------------
 
@@ -132,25 +137,13 @@ CREATE TABLE `entrada_cafe` (
 --
 
 INSERT INTO `entrada_cafe` (`id`, `cant_cafe`, `procedencia`, `fecha_ingreso`) VALUES
-(8, 999, 1, '2019-05-14 06:35:00'),
-(9, 77, 1, '2019-05-14 06:37:00'),
-(10, 6, 1, '2019-05-14 06:46:00'),
-(11, 123, 1, '2019-05-14 20:43:00'),
-(12, 123, 1, '2019-05-14 22:33:00'),
-(13, 55000, 1, '2019-05-14 22:47:00'),
-(14, 3, 3, '2019-05-14 23:18:00'),
-(15, 5000, 3, '2019-05-14 23:20:00'),
-(16, 5000, 2, '2019-05-15 00:40:00'),
-(17, 1, 2, '2019-05-29 04:06:00'),
-(18, 40000, 3, '2019-05-31 06:20:00'),
-(19, 456, 2, '2019-05-31 07:04:00'),
-(20, 3123, 1, '2019-05-31 07:12:00'),
-(21, 123123, 1, '2019-05-31 07:12:00'),
-(22, 1231321, 1, '2019-05-31 07:12:00'),
-(23, 2147483647, 1, '2019-05-31 07:12:00'),
-(24, 1312313131, 1, '2019-05-31 07:12:00'),
-(25, 131213, 1, '2019-05-31 07:12:00'),
-(26, 123, 2, '2019-05-31 19:48:00');
+(37, 1995, 1, '2019-06-17 08:35:00'),
+(38, 1600, 2, '2019-06-17 08:35:00'),
+(39, -1, 3, '2019-06-17 08:36:00'),
+(40, 2000, 4, '2019-06-17 08:36:00'),
+(41, 2000, 5, '2019-06-17 08:36:00'),
+(42, 500, 6, '2019-06-17 08:36:00'),
+(43, 2000, 7, '2019-06-17 08:36:00');
 
 -- --------------------------------------------------------
 
@@ -173,7 +166,13 @@ INSERT INTO `finca` (`nombre`, `id`, `direccion`, `propietario`) VALUES
 ('gerson con dasi', 1, 'calle falsa 123', 'gersiton el gordis'),
 ('bradon', 2, 'no se', 'javier'),
 ('fanny', 3, 'tampoco se', 'carmen'),
-('bartronik', 4, 'no me lase', 'brayan');
+('bartronik', 4, 'no me lase', 'brayan'),
+('maldoando', 5, 'calle 16an', 'antonio'),
+('ufps', 6, 'pupulas', 'nadie'),
+('lucamo', 7, 'no se', 'luchiun'),
+('pamplona', 12, 'ureÃ±a', 'chavez'),
+('nohora', 13, 'qwe', 'qwe'),
+('nohora', 14, 'qwe', 'qwe');
 
 -- --------------------------------------------------------
 
@@ -187,6 +186,15 @@ CREATE TABLE `secado_limpieza` (
   `cant_cafe` int(11) DEFAULT NULL,
   `cafe_almacen` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `secado_limpieza`
+--
+
+INSERT INTO `secado_limpieza` (`id`, `tipo`, `cant_cafe`, `cafe_almacen`) VALUES
+(4, '1', 50, 27),
+(7, '3', 555, 27),
+(8, '2', 100, 30);
 
 -- --------------------------------------------------------
 
@@ -238,6 +246,15 @@ CREATE TABLE `tipo_secado` (
   `nombre` varchar(20) DEFAULT NULL,
   `tiempo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_secado`
+--
+
+INSERT INTO `tipo_secado` (`id`, `nombre`, `tiempo`) VALUES
+('1', 'aire', 5),
+('2', 'sol', 3),
+('3', 'lavado', 5);
 
 --
 -- Índices para tablas volcadas
@@ -333,7 +350,7 @@ ALTER TABLE `tipo_secado`
 -- AUTO_INCREMENT de la tabla `almacen`
 --
 ALTER TABLE `almacen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `empaquetado`
@@ -345,19 +362,19 @@ ALTER TABLE `empaquetado`
 -- AUTO_INCREMENT de la tabla `entrada_cafe`
 --
 ALTER TABLE `entrada_cafe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `finca`
 --
 ALTER TABLE `finca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `secado_limpieza`
 --
 ALTER TABLE `secado_limpieza`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
