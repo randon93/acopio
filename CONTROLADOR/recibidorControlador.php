@@ -53,8 +53,9 @@ class RecibidorControlador extends Controlador{
       $propietario = $_POST['propietario'];
       $this->getCtrModel()->aggFinca($nombre, $direccion, $propietario);
       header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    }else{
+         header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
   public function aggCafe()  {
@@ -63,8 +64,9 @@ class RecibidorControlador extends Controlador{
       $descripcion = $_POST['descripcion'];
       $this->getCtrModel()->aggCafe($id, $descripcion);
       header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    }else{
+         header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
   public function aggPaca()  {
@@ -74,8 +76,9 @@ class RecibidorControlador extends Controlador{
       $material= $_POST['material'];
       $this->getCtrModel()->aggPaca($id, $peso, $material);
       header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    }else{
+         header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
   public function procesar()  {
@@ -85,8 +88,9 @@ class RecibidorControlador extends Controlador{
       $tipoP = $_POST['tipoP'];
       $this->getCtrModel()->procesar($cantidad,$entrada,$tipoP);
       header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
+    }else{
+         header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
   }
 
 
