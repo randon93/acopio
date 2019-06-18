@@ -18,8 +18,10 @@ class RecibidorControlador extends Controlador{
             $this->getCtrVista()->msj = "no se registro la entrada";
             header('Location:  http://127.0.0.1/acopio/vistas/error');
       }
+      }else{
+         header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
+    
   }
 
   public function almacenar()  {
@@ -28,16 +30,20 @@ class RecibidorControlador extends Controlador{
         $calidad = $_POST['calidad'];
         $cafe_tipo = $_POST['cafe_tipo'];
         $cantidad = $_POST['cantidad'];
+        $c = $this->getCtrModel()->cantidadEntrada($entrada);
         // echo "<h1>$entrada -- $calidad -- $cafe_tipo -- $cantidad</h1>";
-        if ( $cantidad > 0 ) {
+        if ( $cantidad > 0 AND $cantidad < $c['cant_cafe']) {
           if ( $this->getCtrModel()->almacenar($entrada, $calidad, $cafe_tipo, $cantidad) ) {
             header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
           }
           // echo "<h1>hola</h1>";
         }
+        header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Ingresastes: '.$cantidad.'KG, cantidad no permitida');
         // echo "<h1>hola</h1>";
     }
-    header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
+    else{
+         header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Tu sesion no tiene los suficientes previlegios para esta accion');
+    }
   }
 
   public function aggFinca()  {

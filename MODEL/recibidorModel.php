@@ -86,5 +86,14 @@ class RecibidorModel extends Modelo {
     
     $consultar -> execute( array(":tipo"=>$tipoP, ":cantidad"=>$cantidad, ":entrada"=>$entrada) );
   }
+
+  public function cantidadEntrada($entrada)  {
+    $con = $this->bd->conectar();
+    $consultar = $con -> prepare("SELECT cant_cafe FROM entrada_cafe WHERE id = :entrada");
+    $consultar -> execute( array(":entrada"=>$entrada) );
+    foreach ($consultar as $value) {
+      return $value;
+    }
+  }
 }
  ?>
