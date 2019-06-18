@@ -37,8 +37,10 @@ class RecibidorControlador extends Controlador{
             header('Location:  http://127.0.0.1/acopio/vistas/recibidor');
           }
           // echo "<h1>hola</h1>";
+        }else{
+           header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Ingresastes: '.$cantidad.'KG, cantidad no permitida');
         }
-        header('Location:  http://127.0.0.1/acopio/vistas/error?msj=Ingresastes: '.$cantidad.'KG, cantidad no permitida');
+       
         // echo "<h1>hola</h1>";
     }
     else{
