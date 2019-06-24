@@ -132,7 +132,6 @@
             <th>Proceso</th>
             <th>Cantidad</th>
             <th>Stock de Almacen</th>
-
           </tr>
           <?php foreach ($this->proceso as $pro) { ?>
           <tr>
@@ -153,7 +152,6 @@
 
           </tr>
           <?php } ?>
-
         </table>
       </div>
       <!-- /.box-body -->

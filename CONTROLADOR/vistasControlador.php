@@ -48,5 +48,20 @@ class vistasControlador extends Controlador{
   public function inicioAdmin()  {
     $this->getVistaCtr()->render("inicioAdmin");
   }
+
+  public function fincas()  {
+    $this->getCtrVista()->fincas = $this->getCtrModel()->listFincas();
+    $this->getCtrVista()->renderD("recibidor","fincas");
+  }
+
+  public function entradas()  {
+    $this->getCtrVista()->entradas = $this->getCtrModel()->listEntradas();
+    $this->getCtrVista()->renderD("recibidor","entradas");
+  }
+  
+  public function almacen()  {
+    $this->getCtrVista()->almacen = $this->getCtrModel()->listAlmacen();
+    $this->getCtrVista()->renderD("recibidor","almacen");
+  }
 }
  ?>
