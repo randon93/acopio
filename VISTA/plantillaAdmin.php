@@ -292,6 +292,7 @@ desired effect
               <li><a href="<?php echo constant('URL');?>vistas/entradas"><i class="fa fa-circle-o"></i>Listado de Entradas</a></li>
               <li><a href="<?php echo constant('URL');?>vistas/fincas"><i class="fa fa-circle-o"></i>Listado de Fincas</a></li>
               <li><a href="<?php echo constant('URL');?>vistas/almacen"><i class="fa fa-circle-o"></i>Almacen</a></li>
+              <li><a href="<?php echo constant('URL');?>vistas/pdfs"><i class="fa fa-circle-o"></i>PDF</a></li>
             </ul>
           </li>
         </ul>

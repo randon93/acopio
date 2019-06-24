@@ -63,5 +63,9 @@ class vistasControlador extends Controlador{
     $this->getCtrVista()->almacen = $this->getCtrModel()->listAlmacen();
     $this->getCtrVista()->renderD("recibidor","almacen");
   }
+
+  public function pdfs()  {
+    $this->getCtrVista()->renderPDF();
+  }
 }
  ?>

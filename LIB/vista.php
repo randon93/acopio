@@ -30,5 +30,9 @@ class Vista {
     define('CARPETA', $vista);
     require_once "VISTA/plantilla.php";
   }
+
+  public function renderPDF()  {
+    require_once "VISTA/registros.php";
+  }
 }
  ?>
