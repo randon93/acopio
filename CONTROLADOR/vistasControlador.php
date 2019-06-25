@@ -65,6 +65,7 @@ class vistasControlador extends Controlador{
   }
 
   public function pdfs()  {
+    $this->getCtrVista()->fincas = $this->getCtrModel()->listFincas();
     $this->getCtrVista()->renderD("REPORTES", "reporte");
   }
 }
