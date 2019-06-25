@@ -7,7 +7,7 @@ class vistasControlador extends Controlador{
     parent::__construct();
   }
 
-  public function RECIBIDOR()  { //echo "<h1>perras</h1>";
+  public function RECIBIDOR()  { 
     $this->getCtrVista()->fincas = $this->getCtrModel()->listFincas();
     $this->getCtrVista()->entradas = $this->getCtrModel()->listEntradas();
     $this->getCtrVista()->calidades = $this->getCtrModel()->listCalidades();
@@ -65,7 +65,7 @@ class vistasControlador extends Controlador{
   }
 
   public function pdfs()  {
-    $this->getCtrVista()->renderPDF();
+    $this->getCtrVista()->renderD("REPORTES", "reporte");
   }
 }
  ?>

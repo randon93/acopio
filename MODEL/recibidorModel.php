@@ -16,7 +16,7 @@ class RecibidorModel extends Modelo {
     $con = $this->bd->conectar();
     $sql = "INSERT INTO entrada_cafe (cant_cafe,procedencia,fecha_ingreso) VALUES (:cant,:procedencia,:fecha)";
     $consultar = $con -> prepare($sql);
-    $fecha_actual = date("Y/m/d H:i");echo $fecha_actual;
+    $fecha_actual = date("Y/m/d H:i");
     $consultar -> execute( array( ":cant"=>$cantCafe, ":procedencia"=>$procedencia, ":fecha"=>$fecha_actual ) );
 
   }
