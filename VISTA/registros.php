@@ -10,7 +10,7 @@ function Header()
     // Logo
     //$this->Image('logo_pb.png',10,8,33);
     // Arial bold 15
-    $this->SetFont('Arial','B',15);
+    $this->SetFont('Arial','B',10);
     // Movernos a la derecha
     $this->Cell(40);
     // Título
@@ -20,9 +20,9 @@ function Header()
 
     for ($i=0; $i < count($_SESSION['NOMBRES']); $i++) { 
         if ( (count($_SESSION['NOMBRES'])-1) == $i ) {
-           $this->Cell(65,10,utf8_decode($_SESSION['NOMBRES'][$i]),1,1,'C',0);
+           $this->Cell(35,10,utf8_decode($_SESSION['NOMBRES'][$i]),1,1,'C',0);
         }else{
-            $this->Cell(65,10,utf8_decode($_SESSION['NOMBRES'][$i]),1,0,'C',0);
+            $this->Cell(35,10,utf8_decode($_SESSION['NOMBRES'][$i]),1,0,'C',0);
         }
     }
 

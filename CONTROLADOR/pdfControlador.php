@@ -20,6 +20,14 @@ class pdfControlador extends Controlador{
         $this->getCtrVista()->renderPDF();
        // print_r($_SESSION['REPORTE']);
     }
+
+    public function pdfAlmacen()    {
+        $finca = $_POST['finca'];
+       // echo $finca;
+        $this->getCtrModel()->pdfAlmacen($finca);
+        $this->getCtrVista()->renderPDF();
+       // print_r($_SESSION['REPORTE']);
+    }
 }
 
 ?>
